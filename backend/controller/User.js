@@ -68,7 +68,6 @@ export const registration = async (req, res) => {
 
 
 //login
-
 export const login =  async(req, res)=>{
 
     // fetch all the data from request body
@@ -84,7 +83,12 @@ export const login =  async(req, res)=>{
         }
 
         // check email exist ot not
-        
+        const isEmailExist = User.findOne({email}).select("+password")
+        if(!isEmailExist){
+            return res.status()
+
+        }
+
     } catch (error) {
         
     }
